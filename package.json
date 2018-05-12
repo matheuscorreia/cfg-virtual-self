@@ -1,0 +1,16 @@
+{
+  "name": "cfg-virtual-self",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "flow-bin": "^0.72.0",
+    "npx": "^10.2.0"
+  },
+  "scripts": {
+    "start": "npx babel-node src/index.js"
+  }
+}
