@@ -1,10 +1,11 @@
 // @flow
+import fs from 'fs'
 
 import CFG from './CFG'
 import { productionRules, startSymbols } from './grammar'
 
 const grammar = new CFG(productionRules, startSymbols)
 
-const randomSentence = grammar.generateRandomSentence();
+const sentences = new Array(100).fill(null).map(() => grammar.generateRandomSentence());
 
-console.log(randomSentence)
+fs.writeFileSync('sentences', sentences.join('\n'));
