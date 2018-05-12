@@ -1,6 +1,18 @@
 // @flow
 
-const nonTerminalSymbols = {
+// @TODO: Extend this file with more grammar shit
+
+type Symbols = {
+  [string]: string,
+}
+
+type TerminalSymbols = {
+  [string]: {
+    [string]: string,
+  },
+}
+
+const nonTerminalSymbols: Symbols = {
   S: 'S',
   VP: 'VP',
   NP: 'NP',
@@ -10,17 +22,57 @@ const nonTerminalSymbols = {
   Vt: 'Vt',
   NN: 'NN',
   IN: 'IN',
+  ADJ: 'ADJ',
 }
 
-const terminalSymbols = {
-  sleeps: 'sleeps',
-  saw: 'saw',
-  man: 'man',
-  woman: 'woman',
-  telescope: 'telescope',
-  the: 'the',
-  with: 'with',
-  in: 'in',
+const terminalSymbols: TerminalSymbols = {
+  transitiveVerbs: {
+    saw: 'saw',
+    sense: 'sense',
+    is: 'is',
+    trust: 'trust',
+    sense: 'sense',
+    resurrected: 'resurrected',
+    locked: 'locked',
+  },
+  intransitiveVerbs: {
+    sleeps: 'sleeps',
+  },
+  prepositions: {
+    with: 'with',
+    in: 'in',
+    at: 'at',
+    since: 'since',
+    to: 'to',
+    through: 'through',
+  },
+  nouns: {
+    sky: 'sky',
+    gate: 'gate',
+    void: 'void',
+    oblivion: 'oblivion',
+    myth: 'myth',
+    echo: 'echo',
+    key: 'key',
+    time: 'time',
+    voice: 'voice',
+    particle: 'particle',
+    light: 'light',
+    sense: 'sense',
+    existence: 'existence',
+    'digital-VIRUS': 'digital-VIRUS',
+  },
+  determiners: {
+    the: 'the',
+    my: 'my',
+    your: 'your',
+    our: 'our',
+  },
+  adjectives: {
+    holy: 'holy',
+    empty: 'empty',
+    infinite: 'infinite',
+  },
 }
 
 const {
@@ -33,6 +85,7 @@ const {
   Vt,
   NN,
   IN,
+  ADJ,
 } = nonTerminalSymbols
 
 export const startSymbols = [
@@ -42,7 +95,7 @@ export const startSymbols = [
 // small alias for making referencing easier
 const ts = terminalSymbols
 
-export const productionRules = [
+export const productionRules: [string, string[]][] = [
   [S, [NP, VP]],
   //---
   [VP, [Vi]],
@@ -50,19 +103,20 @@ export const productionRules = [
   [VP, [VP, PP]],
   //---
   [NP, [DT, NN]],
-  [NP, [NP, PP]],
+  [NP, [DT, ADJ, NN]],
+  // this causes recursion, making big as shit phrases
+  // [NP, [NP, PP]],
   //---
   [PP, [IN, NP]],
   //---
-  [Vi, [ts.sleeps]],
-  [Vt, [ts.saw]],
+  ...Object.values(terminalSymbols.transitiveVerbs).map((sbl: any) => [Vt, [sbl]]),
+  ...Object.values(terminalSymbols.intransitiveVerbs).map((sbl: any) => [Vi, [sbl]]),
   //---
-  [NN, [ts.man]],
-  [NN, [ts.woman]],
-  [NN, [ts.telescope]],
+  ...Object.values(terminalSymbols.nouns).map((sbl: any) => [NN, [sbl]]),
   //---
-  [DT, [ts.the]],
+  ...Object.values(terminalSymbols.determiners).map((sbl: any) => [DT, [sbl]]),
   //---
-  [IN, [ts.with]],
-  [IN, [ts.in]],
+  ...Object.values(terminalSymbols.prepositions).map((sbl: any) => [IN, [sbl]]),
+  //---
+  ...Object.values(terminalSymbols.adjectives).map((sbl: any) => [ADJ, [sbl]]),
 ]
