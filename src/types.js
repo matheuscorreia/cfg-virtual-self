@@ -4,9 +4,9 @@ export type NonTerminalSymbol = string
 
 export type TerminalSymbol = string
 
-export type ProductionRule = any
+export type ProductionRule = [NonTerminalSymbol, Symbol[]]
 
-export type StartSymbol = any
+export type StartSymbol = string
 
 export type Symbol = NonTerminalSymbol | TerminalSymbol;
 
