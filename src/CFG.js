@@ -12,9 +12,7 @@ export default class CFG {
   addProductionRule: (NonTerminalSymbol, Symbol[]) => void
   generate: () => string
 
-  constructor({
-    productionRules = [],
-  }: ContextFreeGrammar) {
+  constructor(productionRules: ProductionRule[] = []) {
     this.productionRules = productionRules
   }
 
