@@ -1,5 +1,6 @@
 // @flow
 import type {
+  ContextFreeGrammar,
   NonTerminalSymbol,
   TerminalSymbol,
   ProductionRule,
@@ -7,7 +8,7 @@ import type {
   Symbol,
 } from './types'
 
-class CFG {
+export default class CFG {
   terminalSymbols: TerminalSymbol[]
   nonTerminalSymbols: NonTerminalSymbol[]
   productionRules: [NonTerminalSymbol, Symbol[]][]
@@ -23,7 +24,7 @@ class CFG {
     nonTerminalSymbols = [],
     productionRules = [],
     startSymbols = [],
-  }) {
+  }: ContextFreeGrammar) {
     this.terminalSymbols = terminalSymbols
     this.nonTerminalSymbols = nonTerminalSymbols
     this.productionRules = productionRules
