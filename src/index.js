@@ -1,8 +1,8 @@
 // @flow
 
 import CFG from './CFG'
-import { productionRules } from './grammar'
+import { productionRules, startSymbols } from './grammar'
 
-const grammar = new CFG(productionRules)
+const grammar = new CFG(productionRules, startSymbols)
 
 console.log(grammar)

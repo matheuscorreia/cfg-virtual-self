@@ -6,7 +6,7 @@ export type TerminalSymbol = string
 
 export type ProductionRule = [NonTerminalSymbol, Symbol[]]
 
-export type StartSymbol = string
+export type StartSymbol = NonTerminalSymbol
 
 export type Symbol = NonTerminalSymbol | TerminalSymbol;
 

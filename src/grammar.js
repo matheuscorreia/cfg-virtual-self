@@ -35,6 +35,10 @@ const {
   IN,
 } = nonTerminalSymbols
 
+export const startSymbols = [
+  S,
+]
+
 // small alias for making referencing easier
 const ts = terminalSymbols
 
