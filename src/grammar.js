@@ -30,10 +30,8 @@ const terminalSymbols: TerminalSymbols = {
     saw: 'saw',
     sense: 'sense',
     is: 'is',
-    trust: 'trust',
-    sense: 'sense',
-    resurrected: 'resurrected',
-    locked: 'locked',
+    trusts: 'trusts',
+    senses: 'senses',
   },
   intransitiveVerbs: {
     sleeps: 'sleeps',
@@ -45,6 +43,7 @@ const terminalSymbols: TerminalSymbols = {
     since: 'since',
     to: 'to',
     through: 'through',
+    of: 'of',
   },
   nouns: {
     sky: 'sky',
@@ -58,7 +57,7 @@ const terminalSymbols: TerminalSymbols = {
     voice: 'voice',
     particle: 'particle',
     light: 'light',
-    sense: 'sense',
+    senses: 'senses',
     existence: 'existence',
     'digital-VIRUS': 'digital-VIRUS',
   },
@@ -72,6 +71,9 @@ const terminalSymbols: TerminalSymbols = {
     holy: 'holy',
     empty: 'empty',
     infinite: 'infinite',
+    locked: 'locked',
+    ressurected: 'ressurected',
+    frozen: 'frozen',
   },
 }
 
