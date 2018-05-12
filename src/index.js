@@ -1,11 +1,8 @@
 // @flow
 
-type Type = {
-  test: string,
-}
+import CFG from './CFG'
+import { productionRules } from './grammar'
 
-const a: Type = {
-  test: 'test',
-}
+const grammar = new CFG(productionRules)
 
-console.log("it worked");
+console.log(grammar)
